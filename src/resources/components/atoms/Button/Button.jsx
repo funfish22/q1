@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components';
 
 const Button = (props) => {
-    const { type = 'primary', name } = props;
+    const { type = 'primary', name, handleRegister } = props;
 
-    return <ButtonRoot type={type}>{name}</ButtonRoot>;
+    return (
+        <ButtonRoot type={type} onClick={handleRegister}>
+            {name}
+        </ButtonRoot>
+    );
 };
 
 export default Button;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -6,16 +7,43 @@ import Model from '@components/atoms/Model';
 import Button from '@components/atoms/Button';
 import Input from '@components/molecules/Input';
 
+import { register } from '@api/register';
+
 const Register = () => {
+    const [account, setAccount] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [confirmPassword, setConfirmPassword] = useState(null);
+
+    const handleRegister = () => {
+        register(account, password);
+    };
+
+    const handleChangeAccount = (e) => {
+        setAccount(e.target.value);
+    };
+
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value);
+    };
+
+    const handleChangeConfirmPassword = (e) => {
+        setConfirmPassword(e.target.value);
+    };
+
     return (
         <RegisterPageRoot>
             <ModelRoot maxWidth={600}>
                 <TitleRoot>註冊</TitleRoot>
                 <RegisterFormRoot>
-                    <Input title="帳號" />
-                    <Input title="密碼" type="password" />
-                    <Input title="確認密碼" type="password" />
-                    <Button name="註冊" />
+                    <Input title="帳號" value={account} onChange={handleChangeAccount} />
+                    <Input title="密碼" type="password" value={password} onChange={handleChangePassword} />
+                    <Input
+                        title="確認密碼"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={handleChangeConfirmPassword}
+                    />
+                    <Button name="註冊" handleRegister={handleRegister} />
                 </RegisterFormRoot>
                 <LoginText>
                     <Link to="/login">返回登入</Link>

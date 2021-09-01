@@ -2,11 +2,11 @@ import Title from '../../atoms/Title';
 import styled from 'styled-components';
 
 const Input = (props) => {
-    const { title = 'text', type } = props;
+    const { title = 'text', type, value, onChange } = props;
     return (
         <LabelRoot>
             <TitleRoot>{title}</TitleRoot>
-            <InputRoot type={type} />
+            <InputRoot type={type} value={value} onChange={onChange} />
         </LabelRoot>
     );
 };
