@@ -1,10 +1,11 @@
-import Title from '@components/atoms/Title';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './Router';
 
 const AppPage = () => {
     return (
-        <div>
-            <Title>首頁</Title>
-        </div>
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
     );
 };
 
