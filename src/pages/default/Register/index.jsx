@@ -43,7 +43,7 @@ const Register = () => {
                         value={confirmPassword}
                         onChange={handleChangeConfirmPassword}
                     />
-                    <Button name="註冊" handleRegister={handleRegister} />
+                    <Button name="註冊" onClick={handleRegister} />
                 </RegisterFormRoot>
                 <LoginText>
                     <Link to="/login">返回登入</Link>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -6,15 +7,32 @@ import Model from '@components/atoms/Model';
 import Button from '@components/atoms/Button';
 import Input from '@components/molecules/Input';
 
+import { login } from '@api/login';
+
 const LoginPage = () => {
+    const [account, setAccount] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = () => {
+        login(account, password);
+    };
+
+    const handleChangeAccount = (e) => {
+        setAccount(e.target.value);
+    };
+
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value);
+    };
+
     return (
         <LoginPageRoot>
             <ModelRoot maxWidth={600}>
                 <TitleRoot>登入</TitleRoot>
                 <LoginFormRoot>
-                    <Input title="帳號" />
-                    <Input title="密碼" type="password" />
-                    <Button name="登入" />
+                    <Input title="帳號" value={account} onChange={handleChangeAccount} />
+                    <Input title="密碼" type="password" value={password} onChange={handleChangePassword} />
+                    <Button name="登入" onClick={handleLogin} />
                 </LoginFormRoot>
                 <RegisterText>
                     還沒有帳號嗎? <Link to="/register">點擊註冊</Link>

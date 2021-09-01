@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
 const Button = (props) => {
-    const { type = 'primary', name, handleRegister } = props;
+    const { type = 'primary', name, onClick } = props;
 
     return (
-        <ButtonRoot type={type} onClick={handleRegister}>
+        <ButtonRoot type={type} onClick={onClick}>
             {name}
         </ButtonRoot>
     );
