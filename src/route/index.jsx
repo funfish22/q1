@@ -11,7 +11,7 @@ export const routes = [
     {
         name: '登入',
         path: '/login',
-        component: lazy(() => import(/*webpackChunkName:"Login"*/ /*webpackMode:"lazy"*/ '@page/default/Login')),
+        component: lazy(() => import(/*webpackChunkName:"LoginPage"*/ /*webpackMode:"lazy"*/ '@page/default/Login')),
         exact: true,
     },
     {

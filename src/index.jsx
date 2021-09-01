@@ -1,6 +1,7 @@
 import { setupMSW } from '@/mocks/browser';
 import ReactDOM from 'react-dom';
 import './reset.css';
+import './index.css';
 import App from './App';
 
 // setupMSW().then(() => 初始化APP)
