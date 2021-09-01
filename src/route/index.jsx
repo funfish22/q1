@@ -15,6 +15,14 @@ export const routes = [
         exact: true,
     },
     {
+        name: '註冊',
+        path: '/register',
+        component: lazy(() =>
+            import(/*webpackChunkName:"RegisterPage"*/ /*webpackMode:"lazy"*/ '@page/default/Register')
+        ),
+        exact: true,
+    },
+    {
         name: 'Page Not Found',
         path: '*',
         component: lazy(() => import(/*webpackChunkName:"404"*/ /*webpackMode:"lazy"*/ '@page/default/PageNotFound')),
