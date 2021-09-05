@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
 import Title from '@components/atoms/Title';
@@ -10,12 +10,16 @@ import Input from '@components/molecules/Input';
 import { register } from '@api/register';
 
 const Register = () => {
+    const history = useHistory();
     const [account, setAccount] = useState(null);
     const [password, setPassword] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState(null);
 
-    const handleRegister = () => {
-        register(account, password);
+    const handleRegister = async () => {
+        const res = await register(account, password);
+        if (res.status === 200) {
+            history.push('/login');
+        }
     };
 
     const handleChangeAccount = (e) => {
