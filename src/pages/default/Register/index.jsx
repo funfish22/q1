@@ -15,6 +15,8 @@ const Register = () => {
     const [password, setPassword] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState(null);
 
+    console.log('history123', history);
+
     const handleRegister = async () => {
         const res = await register(account, password);
         if (res.status === 200) {

@@ -1,4 +1,5 @@
 import { createStore, compose, applyMiddleware } from 'redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import Entrance from '@page/App';
 
@@ -13,7 +14,9 @@ let store = createStore(rootReducers, composeEnhancers(applyMiddleware()));
 const App = () => {
     return (
         <Provider store={store}>
-            <Entrance />
+            <BrowserRouter>
+                <Entrance />
+            </BrowserRouter>
         </Provider>
     );
 };

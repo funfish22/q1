@@ -1,25 +1,26 @@
 import { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Router from './Router';
 
 import { authentication } from '@api/login';
 
 const AppPage = () => {
-    async function fetchData() {
+    const history = useHistory();
+
+    const fetchData = async () => {
         let token = JSON.parse(localStorage.getItem('__mock_token__'));
         const result = await authentication(token);
-        console.log('result.data', result);
-    }
+
+        if (result.status === 403) {
+            history.push('/login');
+        }
+    };
 
     useEffect(() => {
         fetchData();
     });
 
-    return (
-        <BrowserRouter>
-            <Router />
-        </BrowserRouter>
-    );
+    return <Router />;
 };
 
 export default AppPage;

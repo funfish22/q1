@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
 import Title from '@components/atoms/Title';
@@ -10,11 +10,15 @@ import Input from '@components/molecules/Input';
 import { login } from '@api/login';
 
 const LoginPage = () => {
+    const history = useHistory();
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        login(account, password);
+    const handleLogin = async () => {
+        const result = await login(account, password);
+        if (result.status === 200) {
+            history.push('/');
+        }
     };
 
     const handleChangeAccount = (e) => {
