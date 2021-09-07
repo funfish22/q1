@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
 import Title from '@components/atoms/Title';
+import Alert from '@components/atoms/Alert';
 import Model from '@components/atoms/Model';
 import Button from '@components/atoms/Button';
 import Input from '@components/molecules/Input';
@@ -11,6 +12,8 @@ import { login } from '@api/login';
 
 const LoginPage = () => {
     const history = useHistory();
+    const [alert, setAlert] = useState(false);
+    const [alertText, setAlertText] = useState('');
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
 
@@ -18,6 +21,13 @@ const LoginPage = () => {
         const result = await login(account, password);
         if (result.status === 200) {
             history.push('/');
+        }
+        if (result.status === 500) {
+            setAlert(true);
+            setAlertText(result.data.message);
+            setTimeout(() => {
+                setAlert(false);
+            }, 2000);
         }
     };
 
@@ -31,6 +41,7 @@ const LoginPage = () => {
 
     return (
         <LoginPageRoot>
+            {alert && <Alert>{alertText}</Alert>}
             <ModelRoot maxWidth={600}>
                 <TitleRoot>登入</TitleRoot>
                 <LoginFormRoot>

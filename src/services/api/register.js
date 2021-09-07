@@ -1,5 +1,13 @@
 import axios from 'axios';
 
-export const register = async (username, password) => {
-    return await axios.post('/api/register', { username, password });
+export const register = (username, password) => {
+    const result = axios
+        .post('/api/register', { username, password })
+        .then((res) => {
+            return res;
+        })
+        .catch((err) => {
+            return err.response;
+        });
+    return result;
 };
