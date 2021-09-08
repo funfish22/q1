@@ -11,7 +11,7 @@ const AppPage = () => {
     const [showMainPage, setShowMainPage] = useState(true);
 
     const fetchData = async () => {
-        let token = JSON.parse(localStorage.getItem('__mock_token__'));
+        let token = sessionStorage.getItem('token');
         const result = await authentication(token);
 
         if (result.status === 200) {
@@ -24,6 +24,10 @@ const AppPage = () => {
         }
     };
 
+    const handleChangeMenu = () => {
+        console.log('123');
+    };
+
     useEffect(() => {
         fetchData();
         console.log('showMainPage', showMainPage);
@@ -31,7 +35,7 @@ const AppPage = () => {
 
     return (
         <>
-            <Header show={showMainPage} />
+            <Header show={showMainPage} handleChangeMenu={handleChangeMenu} />
             <Router />
         </>
     );

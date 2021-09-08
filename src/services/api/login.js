@@ -15,9 +15,9 @@ export const login = (username, password) => {
 
 export const authentication = (token) => {
     const result = axios
-        .get(`${host}/api/authentication`, {
+        .get(`${host}/api/user`, {
             headers: {
-                AUTHENTICATION_TOKEN: token,
+                Authorization: `Bearer ${token}`,
             },
         })
         .then((res) => {
