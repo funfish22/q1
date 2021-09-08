@@ -1,8 +1,9 @@
 import axios from 'axios';
+const host = 'https://l8-upgrade-apis.vercel.app';
 
 export const login = (username, password) => {
     const result = axios
-        .post('/api/login', { username, password })
+        .post(`${host}/api/login`, { username, password })
         .then((res) => {
             return res;
         })
@@ -14,7 +15,7 @@ export const login = (username, password) => {
 
 export const authentication = (token) => {
     const result = axios
-        .get('/api/authentication', {
+        .get(`${host}/api/authentication`, {
             headers: {
                 AUTHENTICATION_TOKEN: token,
             },
