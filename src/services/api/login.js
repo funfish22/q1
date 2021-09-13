@@ -13,7 +13,8 @@ export const login = (username, password) => {
     return result;
 };
 
-export const authentication = (token) => {
+export const authentication = () => {
+    let token = sessionStorage.getItem('token');
     const result = axios
         .get(`${host}/api/user`, {
             headers: {

@@ -10,17 +10,21 @@ import Input from '@components/molecules/Input';
 
 import { login } from '@api/login';
 
-const LoginPage = () => {
+const LoginPage = (props) => {
+    const { setShowMainPage } = props;
     const history = useHistory();
     const [alert, setAlert] = useState(false);
     const [alertText, setAlertText] = useState('');
-    const [account, setAccount] = useState('');
-    const [password, setPassword] = useState('');
+    const [account, setAccount] = useState('aa@aa.aa');
+    const [password, setPassword] = useState('a00a');
 
     const handleLogin = async () => {
         const result = await login(account, password);
         if (result.status === 200) {
-            history.push('/');
+            console.log('result11111111', result);
+            sessionStorage.setItem('token', result.data.token);
+            setShowMainPage(true);
+            history.push('/home');
         }
         if (result.status === 500) {
             setAlert(true);

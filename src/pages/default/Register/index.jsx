@@ -43,7 +43,7 @@ const Register = () => {
         const res = await register(account, password);
 
         if (res.status === 200) {
-            history.push('/login');
+            history.push('/');
         }
         if (res.status === 500) {
             setAlert(true);
@@ -103,7 +103,7 @@ const Register = () => {
                     <Button name="註冊" onClick={handleRegister} />
                 </RegisterFormRoot>
                 <LoginText>
-                    <Link to="/login">返回登入</Link>
+                    <Link to="/">返回登入</Link>
                 </LoginText>
             </ModelRoot>
         </RegisterPageRoot>

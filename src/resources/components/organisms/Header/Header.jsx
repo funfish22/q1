@@ -5,7 +5,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 const Header = (props) => {
     const { show, handleChangeMenu } = props;
     return (
-        <HeaderRoot style={{ display: show ? 'flex' : 'none' }}>
+        <HeaderRoot>
             <Logo src="https://fakeimg.pl/300x120/?retina=1&text=LOGO&font=noto" alt="logo" />
             <MenuIcon icon={faBars} size="2x" onClick={handleChangeMenu} />
         </HeaderRoot>

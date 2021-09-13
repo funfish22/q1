@@ -4,39 +4,31 @@ import Router from './Router';
 
 import { authentication } from '@api/login';
 
-import Header from '@components/organisms/Header';
-
 const AppPage = () => {
     const history = useHistory();
-    const [showMainPage, setShowMainPage] = useState(true);
+    const [showMainPage, setShowMainPage] = useState(false);
 
-    const fetchData = async () => {
-        let token = sessionStorage.getItem('token');
-        const result = await authentication(token);
+    // const fetchData = async () => {
 
-        if (result.status === 200) {
-            console.log('result1111', result);
-            setShowMainPage(true);
-        }
-        if (result.status === 403) {
-            history.push('/login');
-            setShowMainPage(false);
-        }
-    };
+    //     const result = await authentication(token);
 
-    const handleChangeMenu = () => {
-        console.log('123');
-    };
+    //     if (result.status === 200) {
+    //         console.log('result1111', result);
+    //         setShowMainPage(true);
+    //     }
+    //     if (result.status === 403) {
+    //         history.push('/login');
+    //         setShowMainPage(false);
+    //     }
+    // };
 
     useEffect(() => {
-        fetchData();
-        console.log('showMainPage', showMainPage);
+        // fetchData();
     });
 
     return (
         <>
-            <Header show={showMainPage} handleChangeMenu={handleChangeMenu} />
-            <Router />
+            <Router authentication={authentication} login={showMainPage} setShowMainPage={setShowMainPage} />
         </>
     );
 };
