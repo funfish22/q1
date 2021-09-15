@@ -3,7 +3,7 @@ import Header from '@components/organisms/Header';
 
 import { isLogin } from '@api/login';
 
-const PrivateRoute = ({ component: Component, isPrivate, ...rest }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
         <Route
             {...rest}
