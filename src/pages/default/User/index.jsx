@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const User = () => {
     return (
         <div>
             <Link to="/">首頁</Link>
@@ -9,4 +9,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default User;

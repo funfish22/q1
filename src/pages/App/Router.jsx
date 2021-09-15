@@ -6,13 +6,12 @@ import PublicRoute from '@page/App/PublicRoute';
 import { routes } from '@route';
 
 const Router = (props) => {
-    const { login, setShowMainPage } = props;
+    const { setShowMainPage } = props;
     return (
         <Suspense fallback={<div>Loading</div>}>
             <Switch>
                 <PublicRoute
                     restricted={true}
-                    login={login}
                     setShowMainPage={setShowMainPage}
                     component={lazy(() =>
                         import(/*webpackChunkName:"LoginPage"*/ /*webpackMode:"lazy"*/ '@page/default/Login')
@@ -21,7 +20,6 @@ const Router = (props) => {
                     exact
                 />
                 <PublicRoute
-                    login={login}
                     component={lazy(() =>
                         import(/*webpackChunkName:"RegisterPage"*/ /*webpackMode:"lazy"*/ '@page/default/Register')
                     )}
@@ -30,11 +28,18 @@ const Router = (props) => {
                 />
 
                 <PrivateRoute
-                    login={login}
                     component={lazy(() =>
                         import(/*webpackChunkName:"Home"*/ /*webpackMode:"lazy"*/ '@page/default/Home')
                     )}
                     path="/"
+                    isPrivate={true}
+                    exact
+                />
+                <PrivateRoute
+                    component={lazy(() =>
+                        import(/*webpackChunkName:"User"*/ /*webpackMode:"lazy"*/ '@page/default/User')
+                    )}
+                    path="/user"
                     isPrivate={true}
                     exact
                 />

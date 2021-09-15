@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Header = (props) => {
-    const { show, handleChangeMenu } = props;
+    const { handleChangeMenu } = props;
     return (
         <HeaderRoot>
             <Logo src="https://fakeimg.pl/300x120/?retina=1&text=LOGO&font=noto" alt="logo" />
