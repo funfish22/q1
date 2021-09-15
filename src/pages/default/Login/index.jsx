@@ -24,7 +24,7 @@ const LoginPage = (props) => {
             console.log('result11111111', result);
             sessionStorage.setItem('token', result.data.token);
             setShowMainPage(true);
-            history.push('/home');
+            history.push('/');
         }
         if (result.status === 500) {
             setAlert(true);

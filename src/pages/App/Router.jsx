@@ -17,11 +17,10 @@ const Router = (props) => {
                     component={lazy(() =>
                         import(/*webpackChunkName:"LoginPage"*/ /*webpackMode:"lazy"*/ '@page/default/Login')
                     )}
-                    path="/"
+                    path="/login"
                     exact
                 />
                 <PublicRoute
-                    restricted={true}
                     login={login}
                     component={lazy(() =>
                         import(/*webpackChunkName:"RegisterPage"*/ /*webpackMode:"lazy"*/ '@page/default/Register')
@@ -35,7 +34,8 @@ const Router = (props) => {
                     component={lazy(() =>
                         import(/*webpackChunkName:"Home"*/ /*webpackMode:"lazy"*/ '@page/default/Home')
                     )}
-                    path="/home"
+                    path="/"
+                    isPrivate={true}
                     exact
                 />
                 {/* {routes.map((row, index) => (

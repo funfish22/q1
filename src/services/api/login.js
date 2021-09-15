@@ -15,17 +15,14 @@ export const login = (username, password) => {
 
 export const authentication = () => {
     let token = sessionStorage.getItem('token');
-    const result = axios
-        .get(`${host}/api/user`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
-        .then((res) => {
-            return res;
-        })
-        .catch((err) => {
-            return err.response;
-        });
-    return result;
+    return axios.get(`${host}/api/user`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+};
+
+export const isLogin = () => {
+    if (sessionStorage.getItem('token')) return true;
+    return false;
 };

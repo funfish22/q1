@@ -1,14 +1,9 @@
 import { Route, Redirect } from 'react-router-dom';
 
-import { authentication } from '@api/login';
+import { isLogin } from '@api/login';
 
-const PrivateRoute = ({ login, component: Component, ...rest }) => {
-    return (
-        <Route
-            {...rest}
-            render={(props) => (authentication().status === 200 ? <Component {...props} /> : <Redirect to="/" />)}
-        />
-    );
+const PrivateRoute = ({ login, component: Component, isPrivate, ...rest }) => {
+    return <Route {...rest} render={(props) => (isLogin() ? <Component {...props} /> : <Redirect to="/login" />)} />;
 };
 
 export default PrivateRoute;
